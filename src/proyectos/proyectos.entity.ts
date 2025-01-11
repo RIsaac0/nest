@@ -7,18 +7,24 @@ export class Proyecto {
   @PrimaryGeneratedColumn()
   id_proyecto: number;
 
-  @Column()
-  nombre_proyecto: string;
-
-  @Column('text')
-  descripcion: string;
-
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  fecha_publicacion: Date;
-
   @ManyToOne(() => Empresas, (empresa) => empresa.proyectos)
   empresa: Empresas;
 
-  @OneToMany(() => Estudiante, (students) => students.proyecto)
+  @Column()
+  nombre_proyecto: string;
+
+  @Column()
+  descripcion_proyecto: string;
+
+  @Column()
+  fecha_publicacion: Date;
+
+  @Column()
+  fecha_limite: Date;
+
+  @Column()
+  estado: string; // activo, cerrado
+
+  @OneToMany(() => Estudiante, (estudiante) => estudiante.proyecto)
   estudiantes: Estudiante[];
 }
