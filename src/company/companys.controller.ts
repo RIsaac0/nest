@@ -4,7 +4,7 @@ import { CreateEmpresaDto } from './newCompany/create-company';
 
 @Controller('empresas')
 export class EmpresasController {
-  constructor(private readonly empresasService: EmpresasService) {}
+  constructor(private empresasService: EmpresasService) {}
 
   @Post()
   create(@Body() createEmpresaDto: CreateEmpresaDto) {

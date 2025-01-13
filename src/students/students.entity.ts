@@ -1,5 +1,6 @@
 import { User } from 'src/users/user.entity';
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, NumericType } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, ManyToOne,JoinColumn     } from 'typeorm';
+import { Proyecto } from 'src/proyectos/proyectos.entity';
 
 @Entity()
 export class Estudiante {
@@ -34,7 +35,8 @@ export class Estudiante {
     @Column({ type: 'enum', enum: ['Aprobado', 'Pendiente'], default: 'Pendiente' })
     estado_documentos: string;
 
-    @Column({ nullable: true })
-    proyecto: string;
+    @ManyToOne(() => Proyecto, (proyecto) => proyecto.estudiantes)
+  proyecto: Proyecto;
+    
 
 }

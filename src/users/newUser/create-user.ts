@@ -1,12 +1,26 @@
 
 
 export class CreateNewUser {
-    Nombre: string;
-    Apellido: string;
-    email: string;
-    password: string;
-    rol: string;
- 
+    
+     nombre: string;
+   
+    
+     apellido: string;
+   
+    
+     correo_electronico: string;
+   
+    
+     contrasena: string;
+   
+    
+     rol: string; // Estudiante, Asesor Académico, Empresa, Administrador
+   
+   
+     fecha_registro: Date;
+   
+    
+     estado: string; // activo, inactivo
 }
  
  

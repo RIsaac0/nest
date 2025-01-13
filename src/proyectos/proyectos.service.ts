@@ -22,7 +22,7 @@ export class ProyectosService {
 
   findOne(id: number) {
     return this.proyectosRepository.findOne({
-      where: {id_proyecto: id}, // Suponiendo que 'id' es el nombre del campo en la entidad Proyectos
+      where: {id}, // Suponiendo que 'id' es el nombre del campo en la entidad Proyectos
     });
   }
 

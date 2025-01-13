@@ -1,5 +1,9 @@
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, OneToMany } from 'typeorm';
+import { Estudiante } from 'src/students/students.entity'; 
+import { Empresas } from 'src/company/companys.entity';
+import { AsesoresAcademicos } from 'src/asesores/asesores.entity'; 
+import { CarruselImagenes } from 'src/carrusel-imagenes/carruse-imagenes.entity';
 
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
@@ -7,22 +11,38 @@ export class User {
   id: number;
 
   @Column()
-  Nombre: string;
+  nombre: string;
 
   @Column()
-  Apellido: string;
-  
+  apellido: string;
+
   @Column({ unique: true })
-  email: string;  // Nuevo campo
-  
+  correo_electronico: string;
+
   @Column()
-  password: string;  // Nuevo campo para la contraseña (opcional si se autentica con Auth0)
-  
+  contrasena: string;
+
   @Column()
-  rol: string; // 'estudiante', 'asesor', 'empresa', 'administrador'
- 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-    fecha_registro: Date;
-    @Column()
-    empresa: string;  
+  rol: string; // Estudiante, Asesor Académico, Empresa, Administrador
+
+  @Column()
+  fecha_registro: Date;
+
+  @Column()
+  estado: string; // activo, inactivo
+
+  @OneToOne(() => Estudiante, (estudiante) => estudiante.usuario)
+  @JoinColumn()
+  estudiante: Estudiante;
+
+  @OneToOne(() => Empresas, (empresa) => empresa.usuario)
+  @JoinColumn()
+  empresa: Empresas;
+
+  @OneToOne(() => AsesoresAcademicos, (asesor) => asesor.usuario)
+  @JoinColumn()
+  asesor: AsesoresAcademicos;
+
+  @OneToMany(() => CarruselImagenes, (imagen) => imagen.administrador)
+  imagenes: CarruselImagenes[];
 }

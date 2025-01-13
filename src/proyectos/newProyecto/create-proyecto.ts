@@ -1,3 +1,5 @@
+import { IsString, IsDate, IsNumber, IsOptional } from 'class-validator';
+
 export class CreateProyectoDto{
 
    
@@ -14,4 +16,8 @@ export class CreateProyectoDto{
     
     
       estado: string; // activo, cerrado
+
+      @IsNumber()
+      @IsOptional()
+      empresaId?: number; // Relación opcional con Empresas
 }

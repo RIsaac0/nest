@@ -7,6 +7,11 @@ import { UsersModule } from './users/users.module';
 import { Estudiante } from './students/students.entity';
 import { Proyecto } from './proyectos/proyectos.entity';
 import {  Empresas } from './company/companys.entity';
+import { CarruselImagenes } from './carrusel-imagenes/carruse-imagenes.entity';
+import { AsesoresAcademicos } from './asesores/asesores.entity';
+import { Evaluaciones } from './evaluaciones/evaluaciones.entity';
+import { ReportesAutomaticos } from './reportes/reportes.entity';
+import { Documento } from './documents/documents.entity';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -17,7 +22,7 @@ import {  Empresas } from './company/companys.entity';
       username: 'root',
       password: 'root',
       database: 'nestdb',
-      entities: [User,Estudiante,Proyecto,Empresas],
+      entities: [User,Estudiante,Proyecto,Empresas,CarruselImagenes,AsesoresAcademicos,Evaluaciones,ReportesAutomaticos,Documento],
       synchronize: true,
     }), 
      UsersModule],

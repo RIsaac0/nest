@@ -5,7 +5,7 @@ import { Estudiante } from 'src/students/students.entity';
 @Entity()
 export class Proyecto {
   @PrimaryGeneratedColumn()
-  id_proyecto: number;
+  id: number;
 
   @ManyToOne(() => Empresas, (empresa) => empresa.proyectos)
   empresa: Empresas;
